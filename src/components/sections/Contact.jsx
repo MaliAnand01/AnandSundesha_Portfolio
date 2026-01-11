@@ -21,7 +21,7 @@ const Contact = () => {
       window.location.href = gmailIntent;
     } else {
       // fallback for desktop & iOS
-      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+      window.location.href = `https://mail.google.com/mail/?view=cm&fs=1&to=anandsundesha@gmail.com&su=Collaboration%20Opportunity&body=Hi%20Anand,%0A%0AI%20came%20across%20your%20portfolio...`;
     }
   };
 
