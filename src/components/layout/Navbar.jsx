@@ -56,7 +56,7 @@ const Navbar = ({ scrollToSection }) => {
         <div className="flex justify-between items-center bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-4 py-3 shadow-lg">
           {/* Name */}
           <span className="text-xl font-bold bg-clip-text text-transparent bg-linear-to-r from-purple-500 via-pink-500 to-blue-500">
-            Anand Mali
+            Anand.
           </span>
 
           {/* Hamburger */}
