@@ -112,11 +112,6 @@ export const SERVICES = [
 // Social Links
 export const SOCIAL_LINKS = [
   {
-    icon: Mail,
-    href: "https://mail.google.com/mail/?view=cm&fs=1&to=anandsundesha@gmail.com&su=Collaboration%20Opportunity&body=Hi%20Anand,%0A%0AI%20came%20across%20your%20portfolio...",
-    label: "Email"
-  },
-  {
     icon: Github,
     href: "https://github.com/MaliAnand01",
     label: "GitHub"

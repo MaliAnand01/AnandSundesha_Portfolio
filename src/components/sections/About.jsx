@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
 import { SKILLS, FUN_FACTS } from "../../data/data";
-// import TechOrbit from "./TechOrbit";
 import JourneyTimeline from "./JourneyTimeline";
+import { Download } from "lucide-react";
 
 const About = () => {
   return (
@@ -17,18 +17,17 @@ const About = () => {
 
       {/* Two-column grid */}
       <div className="grid md:grid-cols-2 gap-10 items-center">
-        {/* Left column: 3D placeholder/avatar */}
+        {/* Left column */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           className="flex justify-center w-full max-w-sm mx-auto"
         >
-          {/* <TechOrbit/> */}
           <JourneyTimeline />
         </motion.div>
 
-        {/* Right column: bio */}
+        {/* Right column */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -42,16 +41,18 @@ const About = () => {
               Exploring the Backend
             </span>
           </h3>
+
+          {/* Currently learning badge */}
           <div className="flex items-center gap-3">
             <span
-              className="relative inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium
-    bg-linear-to-r from-purple-500/20 to-pink-500/20
-    border border-purple-500/30 text-purple-300 backdrop-blur-xl"
+              className="
+                relative inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium
+                bg-linear-to-r from-purple-500/20 to-pink-500/20
+                border border-purple-500/30 text-purple-300 backdrop-blur-xl
+              "
             >
-              {/* Pulse dot */}
               <span className="absolute left-2 w-2.5 h-2.5 rounded-full bg-pink-400 animate-ping opacity-75"></span>
               <span className="absolute left-2 w-2.5 h-2.5 rounded-full bg-pink-500"></span>
-
               <span className="pl-4">Currently learning Backend</span>
             </span>
           </div>
@@ -91,6 +92,7 @@ const About = () => {
             </div>
           </div>
 
+          {/* Mini stats */}
           <div className="grid grid-cols-3 gap-4 pt-4">
             <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-4 text-center">
               <h4 className="text-3xl font-bold bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -114,8 +116,33 @@ const About = () => {
             </div>
           </div>
 
+          {/* Resume Download */}
+          <motion.a
+            href="/Anand_Resume.pdf"
+            download
+            target="_blank"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 0 25px rgba(168, 85, 247, 0.4)",
+            }}
+            whileTap={{ scale: 0.95 }}
+            className="
+              inline-flex items-center gap-3 w-fit
+              px-6 py-3 mt-2
+              rounded-full
+              backdrop-blur-xl
+              bg-white/10
+              border border-purple-500/30
+              text-purple-300 font-medium
+              transition-all hover:border-purple-400
+            "
+          >
+            <Download className="w-4 h-4" />
+            Download Resume
+          </motion.a>
+
           {/* Tech summary */}
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2 text-sm pt-2">
             <p>
               <span className="text-purple-400 font-semibold">Tech Stack:</span>{" "}
               HTML, CSS, JavaScript, React, Tailwind, SQL, Java

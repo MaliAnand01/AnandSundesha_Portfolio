@@ -1,35 +1,43 @@
 /* eslint-disable no-unused-vars */
 import { SOCIAL_LINKS } from "../../data/data";
 import { motion } from "framer-motion";
-import { Send, Mail } from "lucide-react";
+import { Send, Mail, Copy, Check } from "lucide-react";
+import { useState } from "react";
+
+const EMAIL = "anandsundesha@gmail.com";
 
 const Contact = () => {
+  const [copied, setCopied] = useState(false);
+
   const handleEmailClick = (e) => {
     e.preventDefault();
 
-    const email = "anandsundesha@gmail.com";
     const subject = encodeURIComponent("Collaboration Opportunity");
     const body = encodeURIComponent(
       "Hi Anand,\n\nI came across your portfolio and would love to connect."
     );
 
-    // Android Gmail intent
-    const gmailIntent = `intent://compose?to=${email}&subject=${subject}&body=${body}#Intent;scheme=mailto;package=com.google.android.gm;end`;
     const isAndroid = /android/i.test(navigator.userAgent);
 
     if (isAndroid) {
+      // Android Gmail App (cannot force new tab — opens app)
+      const gmailIntent = `intent://compose?to=${EMAIL}&subject=${subject}&body=${body}#Intent;scheme=mailto;package=com.google.android.gm;end`;
       window.location.href = gmailIntent;
     } else {
-      // fallback for desktop & iOS
-      window.location.href = `https://mail.google.com/mail/?view=cm&fs=1&to=anandsundesha@gmail.com&su=Collaboration%20Opportunity&body=Hi%20Anand,%0A%0AI%20came%20across%20your%20portfolio...`;
+      // Desktop & iOS → open in NEW TAB
+      const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=${subject}&body=${body}`;
+      window.open(gmailWebUrl, "_blank", "noopener,noreferrer");
     }
   };
 
+  const handleCopyEmail = async () => {
+    await navigator.clipboard.writeText(EMAIL);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <section
-      id="contact"
-      className="relative py-32 px-4 z-10 overflow-hidden"
-    >
+    <section id="contact" className="relative py-32 px-4 z-10 overflow-hidden">
       <div className="max-w-4xl mx-auto text-center">
         {/* Section Title */}
         <h2 className="text-5xl md:text-6xl font-bold mb-20 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
@@ -77,7 +85,34 @@ const Contact = () => {
             })}
           </div>
 
-          {/* CTA Button */}
+          {/* CTA + Copy Email */}
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <span className="text-gray-300 text-lg font-mono">
+              anandsundesha@gmail.com
+            </span>
+
+            <motion.button
+              onClick={handleCopyEmail}
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.95 }}
+              className="
+      p-2
+      rounded-full
+      backdrop-blur-xl
+      bg-white/10
+      border border-white/20
+    "
+              aria-label="Copy email address"
+            >
+              {copied ? (
+                <Check className="w-4 h-4 text-green-400" />
+              ) : (
+                <Copy className="w-4 h-4 text-purple-300" />
+              )}
+            </motion.button>
+          </div>
+
+          {/* Single CTA button */}
           <motion.a
             href="#"
             onClick={handleEmailClick}
@@ -86,7 +121,20 @@ const Contact = () => {
               boxShadow: "0 0 30px rgba(168, 85, 247, 0.45)",
             }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full font-semibold text-lg transition-all"
+            className="
+    inline-flex
+    items-center
+    gap-3
+    px-10
+    py-4
+    bg-linear-to-r
+    from-purple-500
+    to-pink-500
+    rounded-full
+    font-semibold
+    text-lg
+    transition-all
+  "
           >
             <Mail className="w-5 h-5" />
             Send Me an Email
