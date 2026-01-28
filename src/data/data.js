@@ -4,9 +4,9 @@ import { Mail, Github, Linkedin } from "lucide-react";
 // Hero Roles
 export const HERO_ROLES = [
   "Web Developer",
-  "Frontend Expert",
   "React Specialist",
-  "UI/UX Enthusiast"
+  "MCA Student",
+  "Java Full Stack Aspirant"
 ];
 
 // Navigation items
@@ -16,17 +16,17 @@ export const NAV_ITEMS = ["Nest", "Story", "Forge", "Lab", "Signal"];
 
 // About Skills
 export const SKILLS = {
-  Frontend: ["HTML", "CSS", "JavaScript", "React", "Tailwind"],
-  Backend: ["Node.js", "Python", "SQL", "Java"],
+  Frontend: ["HTML", "CSS", "JavaScript", "React", "Tailwind", "Redux"],
+  Backend: ["Java", "Spring Boot (Learning)", "SQL", "Node.js"],
   Tools: ["Git", "VS Code", "GitHub", "Vercel", "Netlify"],
 };
 
 export const FUN_FACTS = [
-  "Frontend by passion, backend by curiosity",
-  "Animations make me happier than templates",
-  "Learns best by breaking things and fixing them",
+  "Self-taught developer pursuing MCA",
+  "Building real solutions for local clients",
+  "Turning 'complex' logic into simple UI",
   "Dark mode is not a choice, it's a lifestyle",
-  "console.log is still my best debugging friend"
+  "Bridging the gap between Frontend & Java Backend"
 ];
 
 
@@ -36,18 +36,18 @@ export const PROJECTS = [
   {
     title: "Shopease",
     description:
-      "A fully functional e-commerce website built with React, Redux, and Tailwind. Features include product browsing, cart management, user authentication, and local storage. Ready for future SQL & Node.js integration.",
-    tech: ["React", "Redux", "Tailwind", "LocalStorage"],
+      "A scalable e-commerce app engineered with React and Redux. Solved complex challenges in global cart state management and dynamic product filtering. Optimized for a 100% responsive mobile-first experience.",
+    tech: ["React", "Redux", "Tailwind", "Complex State"],
     gradient: "from-purple-400 to-blue-400",
     liveDemo: "https://itsshopease.netlify.app/",
     code: "https://github.com/MaliAnand01/eCommerceProject",
     img: "./shopease.png"
   },
   {
-    title: "PongalDelights",
+    title: "PongalDelights (Client Work)",
     description:
-      "An online store with WhatsApp order integration, built with React and Tailwind for smooth browsing and mobile-first experience.",
-    tech: ["React", "Tailwind", "WhatsApp API"],
+      "Delivered a custom ordering platform for a local festive business. Integrated an automated WhatsApp messaging system to streamline orders, removing the need for a complex backend server.",
+    tech: ["React", "Tailwind", "WhatsApp Automation", "Freelance"],
     gradient: "from-blue-500 to-cyan-500",
     liveDemo: "https://pongaldelights.vercel.app/",
     code: "https://github.com/MaliAnand01/ClientProject",
@@ -56,8 +56,8 @@ export const PROJECTS = [
   {
     title: "VibeBox",
     description:
-      "A simple JavaScript music player using Cloudinary for storing and streaming audio files. Lightweight, responsive, and easy to use.",
-    tech: ["JavaScript", "HTML", "CSS", "Cloudinary"],
+      "A lightweight audio streaming player accessing media via Cloudinary. Focuses on efficient DOM manipulation and seamless audio playback control using vanilla JavaScript.",
+    tech: ["JavaScript", "Cloudinary API", "DOM Manipulation"],
     gradient: "from-blue-500 to-cyan-500",
     liveDemo: "https://malianand01.github.io/JavaScript_Projects/Music_Player/index.html",
     code: "https://github.com/MaliAnand01/JavaScript_Projects?tab=readme-ov-file#-vibe-box--music-player",
@@ -66,8 +66,8 @@ export const PROJECTS = [
   {
     title: "Notezy",
     description:
-      "A React-based notes application with full CRUD functionality, storing notes locally. Responsive design and smooth user interactions.",
-    tech: ["React", "Tailwind", "LocalStorage"],
+      "A productivity app featuring full CRUD operations utilizing local storage for data persistence. Demonstrates clean component architecture and immediate UI feedback patterns.",
+    tech: ["React", "Tailwind", "Local Storage"],
     gradient: "from-purple-400 to-blue-400",
     liveDemo: "https://thenotezy.vercel.app/",
     code: "https://github.com/MaliAnand01/NotesAppReact",
@@ -87,23 +87,23 @@ export const SERVICES = [
   },
   {
     icon: Palette,
-    title: "UI / UX Engineering",
+    title: "UI / UX Implementation",
     description:
-      "Designing clean, intuitive, and visually appealing interfaces with a strong focus on user experience.",
+      "Translating complex designs into pixel-perfect code with a focus on smooth user interactions and responsiveness.",
     gradient: "from-pink-500 to-pink-600"
   },
   {
     icon: Rocket,
-    title: "Performance & Optimization",
+    title: "Freelance Web Solutions",
     description:
-      "Optimizing applications for speed, responsiveness, accessibility, and SEO best practices.",
+      "Delivering end-to-end web solutions for small businesses, from requirements gathering to deployment.",
     gradient: "from-blue-500 to-blue-600"
   },
   {
     icon: Database,
-    title: "Backend & Integrations",
+    title: "Java Full Stack (In Progress)",
     description:
-      "Creating scalable backend logic, APIs, and integrations with Node.js, databases, and third-party services.",
+      "Expanding capabilities into enterprise-grade backend development with Java, Spring Boot, and SQL databases.",
     gradient: "from-cyan-500 to-cyan-600"
   }
 ];
@@ -127,22 +127,22 @@ export const SOCIAL_LINKS = [
 export const JOURNEY = [
   {
     year: "2023",
-    title: "Started Web Development",
-    description: "Learned HTML, CSS, and JavaScript fundamentals"
+    title: "Self-Taught Beginnings",
+    description: "Started the coding journey with HTML/CSS/JS independently."
   },
   {
     year: "2024",
-    title: "Frontend Focus",
-    description: "Built projects using React, Tailwind CSS, and animations"
+    title: "React & Freelancing",
+    description: "Built functional apps and secured freelance work (PongalDelights)."
   },
   {
     year: "2025",
-    title: "Real Projects & Portfolio",
-    description: "Working on full-stack apps and showcasing skills"
+    title: "MCA & Certification",
+    description: "Pursuing Master of Computer Applications and Java Full Stack Certification."
   },
   {
     year: "2026",
-    title: "Learning Backend",
-    description: "Diving into Node.js, databases, and server-side development"
+    title: "Full Stack Engineer",
+    description: "Aiming for professional roles in Java Enterprise & React Development."
   }
 ];

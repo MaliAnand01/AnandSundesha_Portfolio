@@ -5,6 +5,8 @@ import { ChevronDown } from "lucide-react";
 import { HERO_ROLES } from "../../data/data";
 import Developer3D from "./Developer3D";
 
+import { Spotlight } from "../ui/Spotlight";
+
 const Hero = ({ scrollToSection }) => {
   const [text, setText] = useState("");
   const [loopNum, setLoopNum] = useState(0);
@@ -39,15 +41,19 @@ const Hero = ({ scrollToSection }) => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col md:flex-row items-center justify-center md:pt-24 pt-40 px-4 z-10"
+      className="relative min-h-screen flex flex-col md:flex-row items-center justify-center md:pt-24 pt-40 px-4 z-10 overflow-hidden"
     >
-      <div className="max-w-7xl w-full mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
+      <Spotlight
+        className="-top-40 left-0 md:left-60 md:-top-20"
+        fill="white"
+      />
+      <div className="max-w-7xl w-full mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Left Side: Text */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-left flex-1 z-20"
+          className="text-left flex-1 z-20 md:w-1/2 max-w-2xl"
         >
           {/* Role Badge */}  
           <motion.span
@@ -103,12 +109,14 @@ const Hero = ({ scrollToSection }) => {
 
         {/* Right Side: 3D Developer */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative flex justify-center items-center flex-1 w-full md:w-auto"
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           transition={{ duration: 1, delay: 0.2 }}
+           className="relative flex justify-center items-center w-full md:absolute md:right-0 md:top-0 md:h-full md:w-[50%] lg:w-[60%] pointer-events-none"
         >
-          <Developer3D />
+          <div className="w-full h-full pointer-events-auto">
+             <Developer3D />
+          </div>
         </motion.div>
       </div>
 

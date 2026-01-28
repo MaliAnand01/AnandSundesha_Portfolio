@@ -4,13 +4,11 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_ITEMS } from "../../data/data";
 
-const Navbar = ({ scrollToSection }) => {
+const Navbar = ({ scrollToSection, activeSection }) => {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("Nest");
 
   const handleClick = (item) => {
     scrollToSection(item);
-    setActive(item);
     setOpen(false);
   };
 
@@ -39,7 +37,7 @@ const Navbar = ({ scrollToSection }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  active === item
+                  activeSection === item
                     ? "bg-linear-to-r from-purple-500 to-pink-500 text-white shadow-lg"
                     : "text-gray-300 hover:text-white hover:bg-white/10"
                 }`}
@@ -83,7 +81,7 @@ const Navbar = ({ scrollToSection }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`w-full py-2 px-4 rounded-full text-sm font-medium transition-colors ${
-                  active === item
+                  activeSection === item
                     ? "bg-linear-to-r from-purple-500 to-pink-500 text-white"
                     : "text-gray-300 hover:text-white hover:bg-white/10"
                 }`}

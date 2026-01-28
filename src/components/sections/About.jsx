@@ -36,9 +36,9 @@ const About = () => {
         >
           {/* Headline */}
           <h3 className="text-3xl font-bold leading-tight">
-            Frontend-Focused Developer <br />
+            Self-Taught Developer & <br />
             <span className="bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Exploring the Backend
+              MCA Candidate
             </span>
           </h3>
 
@@ -53,41 +53,37 @@ const About = () => {
             >
               <span className="absolute left-2 w-2.5 h-2.5 rounded-full bg-pink-400 animate-ping opacity-75"></span>
               <span className="absolute left-2 w-2.5 h-2.5 rounded-full bg-pink-500"></span>
-              <span className="pl-4">Currently learning Backend</span>
+              <span className="pl-4">Pursuing Java Full Stack Cert.</span>
             </span>
           </div>
 
           {/* Intro */}
           <p className="text-lg leading-relaxed">
-            I’m an{" "}
+            I’m a{" "}
             <span className="text-purple-400 font-semibold">
-              intermediate web developer
+              passionate web developer
             </span>{" "}
-            who loves building visually engaging, smooth, and responsive user
-            interfaces. My primary focus is on{" "}
-            <span className="font-semibold">modern frontend development</span>,
-            while actively learning and integrating backend technologies.
+            blending the agility of self-taught coding with the academic depth of an <b>MCA</b>. 
+            I have built real-world freelance solutions (like <i>PongalDelights</i>) and am currently expanding my expertise into enterprise backend development with <b>Java & Spring Boot</b>.
           </p>
 
           {/* Focus cards */}
           <div className="grid sm:grid-cols-2 gap-4">
             <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-5">
               <h4 className="text-lg font-semibold text-purple-400 mb-2">
-                Frontend Core
+                Frontend Expertise
               </h4>
               <p className="text-sm text-gray-400 leading-relaxed">
-                React, Tailwind CSS, JavaScript animations, component
-                architecture, responsive layouts, and UI performance.
+                Building responsive, pixel-perfect interfaces with React, Redux, and Tailwind CSS.
               </p>
             </div>
 
             <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-5">
               <h4 className="text-lg font-semibold text-pink-400 mb-2">
-                Backend Learning
+                Backend Aspirations
               </h4>
               <p className="text-sm text-gray-400 leading-relaxed">
-                Node.js, SQL databases, authentication flows, APIs, and
-                preparing for full-stack development.
+                Mastering Java, Spring Boot, and SQL to transition into a robust Full Stack Engineer.
               </p>
             </div>
           </div>
@@ -96,23 +92,23 @@ const About = () => {
           <div className="grid grid-cols-3 gap-4 pt-4">
             <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-4 text-center">
               <h4 className="text-3xl font-bold bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                10+
+                Freelance
               </h4>
-              <p className="text-xs text-gray-400 mt-1">Projects Built</p>
+              <p className="text-xs text-gray-400 mt-1">Experience</p>
             </div>
 
             <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-4 text-center">
               <h4 className="text-3xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                12+
+                MCA
               </h4>
-              <p className="text-xs text-gray-400 mt-1">Tools & Tech</p>
+              <p className="text-xs text-gray-400 mt-1">Candidate</p>
             </div>
 
             <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-4 text-center">
               <h4 className="text-3xl font-bold bg-linear-to-r from-pink-400 to-rose-400 bg-clip-text text-transparent">
-                ∞
+                Open
               </h4>
-              <p className="text-xs text-gray-400 mt-1">Learning Mindset</p>
+              <p className="text-xs text-gray-400 mt-1">To Work</p>
             </div>
           </div>
 
