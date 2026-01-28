@@ -4,7 +4,7 @@ import { Suspense, lazy } from 'react'
 // Use dynamic import for Spline to avoid heavy initial load
 const Spline = lazy(() => import('@splinetool/react-spline'))
 
-export function SplineScene({ scene, className }) {
+export function SplineScene({ scene, className, onLoad }) {
   return (
     <Suspense 
       fallback={
@@ -16,6 +16,7 @@ export function SplineScene({ scene, className }) {
       <Spline
         scene={scene}
         className={className}
+        onLoad={onLoad}
       />
     </Suspense>
   )

@@ -7,7 +7,7 @@ import Developer3D from "./Developer3D";
 
 import { Spotlight } from "../ui/Spotlight";
 
-const Hero = ({ scrollToSection }) => {
+const Hero = ({ scrollToSection, setIsLoaded }) => {
   const [text, setText] = useState("");
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -115,7 +115,7 @@ const Hero = ({ scrollToSection }) => {
            className="relative flex justify-center items-center w-full md:absolute md:right-0 md:top-0 md:h-full md:w-[50%] lg:w-[60%] pointer-events-none"
         >
           <div className="w-full h-full pointer-events-auto">
-             <Developer3D />
+             <Developer3D onLoad={() => setIsLoaded(false)} />
           </div>
         </motion.div>
       </div>

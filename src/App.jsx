@@ -4,6 +4,7 @@ import Navbar from "./components/layout/Navbar";
 import Hero from "./components/hero/Hero";
 import Footer from "./components/layout/Footer";
 import SmoothScroll from "./components/ui/SmoothScroll";
+import Preloader from "./components/ui/Preloader";
 
 // Lazy load below-the-fold sections
 const About = lazy(() => import("./components/sections/About"));
@@ -18,6 +19,7 @@ const LoadingFallback = () => (
 );
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState("Nest");
 
   const sectionMap = {
@@ -80,8 +82,9 @@ const App = () => {
     <SmoothScroll>
       <div className="bg-black text-white">
         <StarryBackground />
+        <Preloader isLoading={isLoading} />
         <Navbar scrollToSection={scrollToSection} activeSection={activeSection} />
-        <Hero scrollToSection={scrollToSection} />
+        <Hero scrollToSection={scrollToSection} setIsLoaded={setIsLoading} />
         
         <Suspense fallback={<LoadingFallback />}>
           <About />
