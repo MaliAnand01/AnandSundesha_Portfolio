@@ -38,7 +38,7 @@ export const PROJECTS = [
     description:
       "A scalable e-commerce app engineered with React and Redux. Solved complex challenges in global cart state management and dynamic product filtering. Optimized for a 100% responsive mobile-first experience.",
     tech: ["React", "Redux", "Tailwind", "Complex State"],
-    gradient: "from-purple-400 to-blue-400",
+    gradient: "from-gray-600 to-gray-400",
     liveDemo: "https://itsshopease.netlify.app/",
     code: "https://github.com/MaliAnand01/eCommerceProject",
     img: "./shopease.png"
@@ -48,7 +48,7 @@ export const PROJECTS = [
     description:
       "Delivered a custom ordering platform for a local festive business. Integrated an automated WhatsApp messaging system to streamline orders, removing the need for a complex backend server.",
     tech: ["React", "Tailwind", "WhatsApp Automation", "Freelance"],
-    gradient: "from-blue-500 to-cyan-500",
+    gradient: "from-zinc-600 to-zinc-400",
     liveDemo: "https://pongaldelights.vercel.app/",
     code: "https://github.com/MaliAnand01/ClientProject",
     img: "./pongal.png"
@@ -58,7 +58,7 @@ export const PROJECTS = [
     description:
       "A lightweight audio streaming player accessing media via Cloudinary. Focuses on efficient DOM manipulation and seamless audio playback control using vanilla JavaScript.",
     tech: ["JavaScript", "Cloudinary API", "DOM Manipulation"],
-    gradient: "from-blue-500 to-cyan-500",
+    gradient: "from-slate-600 to-slate-400",
     liveDemo: "https://malianand01.github.io/JavaScript_Projects/Music_Player/index.html",
     code: "https://github.com/MaliAnand01/JavaScript_Projects?tab=readme-ov-file#-vibe-box--music-player",
     img: "./music.png"
@@ -68,7 +68,7 @@ export const PROJECTS = [
     description:
       "A productivity app featuring full CRUD operations utilizing local storage for data persistence. Demonstrates clean component architecture and immediate UI feedback patterns.",
     tech: ["React", "Tailwind", "Local Storage"],
-    gradient: "from-purple-400 to-blue-400",
+    gradient: "from-gray-500 to-gray-300",
     liveDemo: "https://thenotezy.vercel.app/",
     code: "https://github.com/MaliAnand01/NotesAppReact",
     img: "./notezy.png"
@@ -83,28 +83,28 @@ export const SERVICES = [
     title: "Frontend Development",
     description:
       "Building modern, responsive, and interactive web applications using React, Tailwind CSS, and JavaScript.",
-    gradient: "from-purple-500 to-purple-600"
+    gradient: "from-gray-600 to-gray-500"
   },
   {
     icon: Palette,
     title: "UI / UX Implementation",
     description:
       "Translating complex designs into pixel-perfect code with a focus on smooth user interactions and responsiveness.",
-    gradient: "from-pink-500 to-pink-600"
+    gradient: "from-zinc-600 to-zinc-500"
   },
   {
     icon: Rocket,
     title: "Freelance Web Solutions",
     description:
       "Delivering end-to-end web solutions for small businesses, from requirements gathering to deployment.",
-    gradient: "from-blue-500 to-blue-600"
+    gradient: "from-slate-600 to-slate-500"
   },
   {
     icon: Database,
     title: "Java Full Stack (In Progress)",
     description:
       "Expanding capabilities into enterprise-grade backend development with Java, Spring Boot, and SQL databases.",
-    gradient: "from-cyan-500 to-cyan-600"
+    gradient: "from-stone-600 to-stone-500"
   }
 ];
 
