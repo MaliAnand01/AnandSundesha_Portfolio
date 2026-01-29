@@ -7,7 +7,7 @@ import Developer3D from "./Developer3D";
 
 import { Spotlight } from "../ui/Spotlight";
 
-const Hero = ({ scrollToSection, setIsLoaded }) => {
+const Hero = ({ scrollToSection, isLoaded }) => {
   const [text, setText] = useState("");
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -50,9 +50,9 @@ const Hero = ({ scrollToSection, setIsLoaded }) => {
       <div className="max-w-7xl w-full mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Left Side: Text */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={isLoaded ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 1, delay: 0.2 }}
           className="text-left flex-1 z-20 md:w-1/2 max-w-2xl"
         >
           {/* Role Badge */}  
@@ -63,29 +63,29 @@ const Hero = ({ scrollToSection, setIsLoaded }) => {
             className="
     inline-flex items-center gap-2
     px-4 py-2 mb-4
-    text-sm md:text-base font-mono text-white
-    bg-white/20 backdrop-blur-xl
-    border border-white/30
+    text-sm md:text-base font-tech uppercase tracking-widest text-gray-200
+    bg-zinc-800/50 backdrop-blur-xl
+    border border-white/10
     rounded-full
-    shadow-lg shadow-purple-500/20
-    ring-1 ring-white/20
+    shadow-lg shadow-white/5
+    ring-1 ring-white/10
   "
           >
-            <span className="w-2 h-2 rounded-full bg-linear-to-r from-purple-500 to-pink-500 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-gray-400 animate-pulse" />
             Web Developer · React Specialist
           </motion.span>
 
-          <span className="text-purple-400 text-lg font-mono block mb-2">
+          <span className="text-gray-400 text-lg font-tech tracking-wider block mb-2">
             Hi there, I'm
           </span>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6 bg-linear-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6 bg-linear-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent drop-shadow-lg font-display tracking-tight">
             Anand Sundesha
           </h1>
-          <h2 className="text-xl sm:text-2xl md:text-4xl font-semibold mb-6 md:mb-8 h-12 text-gray-300">
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-semibold mb-6 md:mb-8 h-12 text-gray-400 font-tech">
             {text}
             <span className="animate-pulse">|</span>
           </h2>
-          <p className="text-gray-400 text-base sm:text-lg mb-6 md:mb-8 max-w-xl leading-relaxed">
+          <p className="text-gray-500 text-base sm:text-lg mb-6 md:mb-8 max-w-xl leading-relaxed font-body">
             Crafting beautiful, performant web experiences with modern
             technologies. Specialized in React, Tailwind CSS, and creating
             seamless user interfaces.
@@ -94,13 +94,13 @@ const Hero = ({ scrollToSection, setIsLoaded }) => {
           <div className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={() => scrollToSection("Signal")}
-              className="w-full sm:w-auto px-8 py-4 bg-linear-to-r from-purple-500 to-pink-500 rounded-full font-semibold hover:shadow-lg transition-all cursor-pointer"
+              className="w-full sm:w-auto px-8 py-4 bg-linear-to-r from-gray-200 to-gray-400 text-black rounded-full font-semibold hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all cursor-pointer font-tech uppercase tracking-wide"
             >
               Get In Touch
             </button>
             <button
               onClick={() => scrollToSection("Forge")}
-              className="w-full sm:w-auto px-8 py-4 border-2 border-purple-500/50 rounded-full font-semibold backdrop-blur-sm hover:bg-purple-500/10 transition-all cursor-pointer"
+              className="w-full sm:w-auto px-8 py-4 border-2 border-white/20 text-gray-300 rounded-full font-semibold backdrop-blur-sm hover:bg-white/10 hover:border-white/40 transition-all cursor-pointer font-tech uppercase tracking-wide"
             >
               View Work
             </button>
@@ -109,13 +109,13 @@ const Hero = ({ scrollToSection, setIsLoaded }) => {
 
         {/* Right Side: 3D Developer */}
         <motion.div
-           initial={{ opacity: 0 }}
-           animate={{ opacity: 1 }}
-           transition={{ duration: 1, delay: 0.2 }}
+           initial={{ opacity: 0, scale: 0.8 }}
+           animate={isLoaded ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+           transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
            className="relative flex justify-center items-center w-full md:absolute md:right-0 md:top-0 md:h-full md:w-[50%] lg:w-[60%] pointer-events-none"
         >
           <div className="w-full h-full pointer-events-auto">
-             <Developer3D onLoad={() => setIsLoaded(false)} />
+             <Developer3D />
           </div>
         </motion.div>
       </div>
@@ -124,9 +124,9 @@ const Hero = ({ scrollToSection, setIsLoaded }) => {
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 1.5, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:block"
       >
-        <ChevronDown className="w-8 h-8 text-purple-400" />
+        <ChevronDown className="w-8 h-8 text-gray-500" />
       </motion.div>
     </section>
   );

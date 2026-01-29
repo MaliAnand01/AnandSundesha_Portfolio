@@ -2,6 +2,10 @@
 
 @theme {
   --animate-spotlight: spotlight 2s ease .75s 1 forwards;
+  
+  --font-display: "Orbitron", sans-serif;
+  --font-tech: "Rajdhani", sans-serif;
+  --font-body: "Space Grotesk", sans-serif;
 
   @keyframes spotlight {
     0% {
@@ -18,4 +22,5 @@
 /* optional global styles */
 html, body {
   scroll-behavior: smooth;
+  font-family: var(--font-body);
 }

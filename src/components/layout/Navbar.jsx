@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_ITEMS } from "../../data/data";
 
-const Navbar = ({ scrollToSection, activeSection }) => {
+const Navbar = ({ scrollToSection, activeSection, isLoaded }) => {
   const [open, setOpen] = useState(false);
 
   const handleClick = (item) => {
@@ -17,14 +17,14 @@ const Navbar = ({ scrollToSection, activeSection }) => {
       {/* Desktop Navbar */}
       <motion.nav
         initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        animate={isLoaded ? { y: 0, opacity: 1 } : { y: -50, opacity: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
         className="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:flex justify-between items-center w-4/5"
       >
-        <div className="flex justify-between items-center w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 shadow-lg">
+        <div className="flex justify-between items-center w-full bg-zinc-900/50 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 shadow-lg shadow-black/20">
           
           {/* Name / Logo */}
-          <span className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-linear-to-r from-purple-500 to-blue-500">
+          <span className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-linear-to-r from-gray-100 to-gray-400 drop-shadow-sm font-display tracking-wider">
             Anand.
           </span>
 
@@ -36,10 +36,10 @@ const Navbar = ({ scrollToSection, activeSection }) => {
                 onClick={() => handleClick(item)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 font-tech uppercase tracking-wide ${
                   activeSection === item
-                    ? "bg-linear-to-r from-purple-500 to-pink-500 text-white shadow-lg"
-                    : "text-gray-300 hover:text-white hover:bg-white/10"
+                    ? "bg-linear-to-r from-gray-200 to-gray-400 text-black shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                    : "text-gray-400 hover:text-white hover:bg-white/10"
                 }`}
               >
                 {item}
@@ -51,9 +51,9 @@ const Navbar = ({ scrollToSection, activeSection }) => {
 
       {/* Mobile Navbar */}
       <div className="md:hidden fixed top-6 left-1/2 -translate-x-1/2 z-50 w-11/12">
-        <div className="flex justify-between items-center bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-4 py-3 shadow-lg">
+        <div className="flex justify-between items-center bg-zinc-900/50 backdrop-blur-xl border border-white/10 rounded-full px-4 py-3 shadow-lg">
           {/* Name */}
-          <span className="text-xl font-bold bg-clip-text text-transparent bg-linear-to-r from-purple-500 via-pink-500 to-blue-500">
+          <span className="text-xl font-bold bg-clip-text text-transparent bg-linear-to-r from-gray-100 to-gray-400">
             Anand.
           </span>
 
@@ -72,7 +72,7 @@ const Navbar = ({ scrollToSection, activeSection }) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="mt-3 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-lg p-4 flex flex-col gap-2"
+            className="mt-3 bg-zinc-900/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-lg p-4 flex flex-col gap-2"
           >
             {NAV_ITEMS.map((item) => (
               <motion.button
@@ -82,8 +82,8 @@ const Navbar = ({ scrollToSection, activeSection }) => {
                 whileTap={{ scale: 0.95 }}
                 className={`w-full py-2 px-4 rounded-full text-sm font-medium transition-colors ${
                   activeSection === item
-                    ? "bg-linear-to-r from-purple-500 to-pink-500 text-white"
-                    : "text-gray-300 hover:text-white hover:bg-white/10"
+                    ? "bg-linear-to-r from-gray-200 to-gray-400 text-black"
+                    : "text-gray-400 hover:text-white hover:bg-white/10"
                 }`}
               >
                 {item}

@@ -82,9 +82,9 @@ const App = () => {
     <SmoothScroll>
       <div className="bg-black text-white">
         <StarryBackground />
-        <Preloader isLoading={isLoading} />
-        <Navbar scrollToSection={scrollToSection} activeSection={activeSection} />
-        <Hero scrollToSection={scrollToSection} setIsLoaded={setIsLoading} />
+        <Preloader onComplete={() => setIsLoading(false)} />
+        <Navbar scrollToSection={scrollToSection} activeSection={activeSection} isLoaded={!isLoading} />
+        <Hero scrollToSection={scrollToSection} isLoaded={!isLoading} />
         
         <Suspense fallback={<LoadingFallback />}>
           <About />
