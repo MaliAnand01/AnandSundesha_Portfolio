@@ -5,6 +5,7 @@ import Hero from "./components/hero/Hero";
 import Footer from "./components/layout/Footer";
 import SmoothScroll from "./components/ui/SmoothScroll";
 import Preloader from "./components/ui/Preloader";
+import ScrollToTop from "./components/ui/ScrollToTop";
 
 // Lazy load below-the-fold sections
 const About = lazy(() => import("./components/sections/About"));
@@ -31,43 +32,59 @@ const App = () => {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 300; // Offset for trigger point
+    const observerOptions = {
+      root: null,
+      rootMargin: "-40% 0px -40% 0px", // Trigger when section crosses the middle 20% of screen
+      threshold: 0,
+    };
 
-      // We want to find the current section based on scroll position
-      let currentSection = "Nest"; // Default
-
-      for (const [key, id] of Object.entries(sectionMap)) {
-        const element = document.getElementById(id);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            currentSection = key;
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          const activeKey = Object.keys(sectionMap).find(
+            (key) => sectionMap[key] === sectionId
+          );
+          if (activeKey) {
+            setActiveSection(activeKey);
           }
         }
-      }
-      setActiveSection(currentSection);
+      });
     };
 
-    let ticking = false;
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Function to attempt observation
+    const observeSections = () => {
+      let allFound = true;
+      Object.values(sectionMap).forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) {
+          observer.observe(element);
+        } else {
+          allFound = false; // Keep retrying if any section (e.g., lazy loaded) is missing
+        }
+      });
+      return allFound;
     };
 
-    window.addEventListener("scroll", onScroll);
-    // Initial check
-    setTimeout(handleScroll, 100);
+    // Initial attempt
+    observeSections();
 
-    return () => window.removeEventListener("scroll", onScroll);
+    // Retry checking for lazy-loaded sections
+    const intervalId = setInterval(() => {
+      const done = observeSections();
+      if (done) clearInterval(intervalId);
+    }, 500);
+
+    // Timeout to stop checking after 10 seconds to avoid infinite loop
+    const timeoutId = setTimeout(() => clearInterval(intervalId), 10000);
+
+    return () => {
+      observer.disconnect();
+      clearInterval(intervalId);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   const scrollToSection = (item) => {
@@ -94,6 +111,7 @@ const App = () => {
         </Suspense>
 
         <Footer />
+        <ScrollToTop />
       </div>
     </SmoothScroll>
   );

@@ -1,87 +1,121 @@
 /* eslint-disable no-unused-vars */
+import React from "react";
 import { PROJECTS } from "../../data/data";
 import { motion } from "framer-motion";
-import { Code2, ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ArrowRightLeft } from "lucide-react";
+import { CardStack } from "../ui/CardStack";
+
+const ProjectCard = ({ project, active }) => {
+  const [isPressed, setIsPressed] = React.useState(false);
+
+  // Reset pressed state when card becomes inactive
+  React.useEffect(() => {
+    if (!active) setIsPressed(false);
+  }, [active]);
+
+  return (
+    <div 
+      className={`
+        relative h-full w-full bg-zinc-900 rounded-2xl overflow-hidden 
+        transition-all duration-500
+        ${active ? "ring-2 ring-white/20 shadow-2xl shadow-purple-500/10" : "grayscale sepia-[.5] brightness-50"} 
+        group cursor-pointer
+      `}
+      onClick={() => active && setIsPressed(!isPressed)}
+      onMouseLeave={() => setIsPressed(false)}
+    >
+        {/* Full Background Image */}
+        <div className="absolute inset-0 w-full h-full bg-black">
+          <img 
+            src={project.img} 
+            alt={project.title} 
+            loading="lazy"
+            className={`
+              w-full h-full object-cover object-top block 
+              transition-transform duration-700 
+              ${active && !isPressed ? "group-hover:scale-105" : ""} 
+              ${isPressed ? "scale-105 blur-[2px]" : ""}
+            `}
+          />
+        </div>
+
+        {/* Hover/Tap Overlay with Content */}
+        <div className={`
+          absolute inset-0 bg-black/80 backdrop-blur-sm 
+          transition-opacity duration-300 
+          flex flex-col justify-center items-center p-6 text-center
+          ${active && isPressed ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
+        `}>
+          <h3 className={`text-2xl font-bold mb-3 text-white font-tech tracking-wide uppercase transition-transform duration-300 ${isPressed || "group-hover:translate-y-0"} ${isPressed ? "translate-y-0" : "translate-y-4"}`}>
+            {project.title}
+          </h3>
+
+          <p className={`text-gray-300 mb-6 text-sm leading-relaxed transition-transform duration-300 delay-75 ${isPressed ? "translate-y-0" : "translate-y-4 group-hover:translate-y-0"}`}>
+            {project.description}
+          </p>
+
+          <div className={`flex flex-wrap justify-center gap-2 mb-8 transition-transform duration-300 delay-100 ${isPressed ? "translate-y-0" : "translate-y-4 group-hover:translate-y-0"}`}>
+            {project.tech.slice(0, 4).map((tech) => (
+              <span key={tech} className="px-2 py-1 bg-white/10 rounded-md text-[10px] uppercase tracking-wider text-white border border-white/5">
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div className={`flex gap-4 w-full transition-transform duration-300 delay-150 ${isPressed ? "translate-y-0" : "translate-y-4 group-hover:translate-y-0"}`}>
+            <a
+              href={project.liveDemo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 bg-white text-black py-2 rounded-xl font-bold hover:bg-gray-200 transition-colors pointer-events-auto text-sm"
+              onPointerDown={(e) => e.stopPropagation()}
+              onClick={(e) => e.stopPropagation()}
+            >
+                <ExternalLink className="w-4 h-4" />
+                Live
+            </a>
+            <a
+              href={project.code}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 bg-white/10 text-white border border-white/20 py-2 rounded-xl hover:bg-white/20 transition-colors pointer-events-auto text-sm"
+              onPointerDown={(e) => e.stopPropagation()}
+              onClick={(e) => e.stopPropagation()}
+            >
+                <Github className="w-4 h-4" />
+                Code
+            </a>
+          </div>
+        </div>
+    </div>
+  );
+};
 
 const Projects = () => {
   return (
-    <section id="projects" className="relative py-32 px-4 z-10">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-5xl md:text-6xl font-bold text-center mb-20 bg-linear-to-r from-gray-200 via-gray-400 to-gray-200 bg-clip-text text-transparent drop-shadow-lg pb-2 font-display tracking-tight">
+    <section id="projects" className="relative py-32 px-4 z-10 min-h-screen flex flex-col justify-center overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full">
+        <h2 className="text-5xl md:text-6xl font-bold text-center mb-6 bg-linear-to-r from-gray-200 via-gray-400 to-gray-200 bg-clip-text text-transparent drop-shadow-lg pb-2 font-display tracking-tight">
           Featured Projects
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {PROJECTS.map((project, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="group relative backdrop-blur-xl bg-zinc-900/50 p-6 rounded-3xl border border-white/10 hover:border-white/30 hover:scale-105 duration-500 transition-all overflow-hidden shadow-lg shadow-black/20"
-            >
-              <div
-                className={`absolute inset-0 bg-linear-to-br ${project.gradient} opacity-0 group-hover:opacity-5 transition-opacity rounded-3xl mix-blend-overlay`}
-              />
-
-              <div className="relative z-10">
-                <div className="rounded-2xl mb-6 flex items-center justify-center overflow-hidden border border-white/5">
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 2 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full h-full"
-                  >
-                    {/* <Code2 className="w-20 h-20 text-purple-400" /> */}
-                    <img src={project.img} alt={project.title} className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500" />
-                  </motion.div>
-                </div>
-
-                <h3 className="text-2xl font-bold mb-3 text-gray-200 group-hover:text-white transition-colors font-tech tracking-wide uppercase">
-                  {project.title}
-                </h3>
-
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-zinc-800/50 rounded-full text-xs border border-white/10 text-gray-300 hover:bg-zinc-700/50 transition-colors"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex gap-4">
-                  <motion.a
-                    href={project.liveDemo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    <span className="text-sm">Live Demo</span>
-                  </motion.a>
-                  <motion.a
-                    href={project.code}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-                  >
-                    <Github className="w-4 h-4" />
-                    <span className="text-sm">Code</span>
-                  </motion.a>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+        <div className="text-center mb-2 text-gray-500 flex items-center justify-center gap-2 animate-pulse">
+            <ArrowRightLeft className="w-4 h-4" />
+            <span className="text-sm uppercase tracking-widest">Swipe • Tap for Details</span>
         </div>
+
+        <CardStack 
+          items={PROJECTS}
+          cardWidth={600} 
+          cardHeight={340} // 16:9 Aspect Ratio
+          autoAdvance={true}
+          intervalMs={4000}
+          springStiffness={180} // Faster, snappier spring
+          springDamping={30}
+          renderCard={(project, { active }) => (
+            <ProjectCard project={project} active={active} />
+          )}
+        />
       </div>
     </section>
   );

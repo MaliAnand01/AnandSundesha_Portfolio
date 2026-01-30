@@ -34,6 +34,16 @@ export const FUN_FACTS = [
 // Projects
 export const PROJECTS = [
   {
+    title: "Luvia Beauty",
+    description:
+      "A comprehensive beauty ecommerce platform featuring Light/Dark mode, Admin Dashboard, and full cart functionality with Address & Order management. Built with Context API for global state and local storage for persistence.",
+    tech: ["React", "Tailwind", "Framer Motion", "Context API"],
+    gradient: "from-gray-600 to-gray-400",
+    liveDemo: "https://luvia.vercel.app/",
+    code: "https://github.com/MaliAnand01/luvia-beauty",
+    img: "./luvia.png"
+  },
+  {
     title: "Shopease",
     description:
       "A scalable e-commerce app engineered with React and Redux. Solved complex challenges in global cart state management and dynamic product filtering. Optimized for a 100% responsive mobile-first experience.",
