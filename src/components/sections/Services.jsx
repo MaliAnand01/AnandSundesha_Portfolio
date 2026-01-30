@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Services = () => {
   return (
-    <section id="services" className="relative py-32 px-4 z-10 overflow-hidden">
+    <section id="services" className="relative py-20 px-4 z-10 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section title */}
         <h2 className="text-5xl md:text-6xl font-bold text-center mb-20 bg-linear-to-r from-gray-200 via-gray-400 to-gray-200 bg-clip-text text-transparent drop-shadow-lg pb-2 font-display tracking-tight">

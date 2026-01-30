@@ -114,9 +114,16 @@ const Hero = ({ scrollToSection, isLoaded }) => {
            transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
            className="relative flex justify-center items-center w-full md:absolute md:right-0 md:top-0 md:h-full md:w-[50%] lg:w-[60%] pointer-events-none"
         >
-          <div className="w-full h-full pointer-events-auto">
+          <div 
+            className="w-full h-full pointer-events-auto"
+            style={{ 
+              maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to bottom, black 80%, transparent 100%)"
+            }}
+          >
              <Developer3D />
           </div>
+
         </motion.div>
       </div>
 

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { SOCIAL_LINKS } from "../../data/data";
 import { motion } from "framer-motion";
-import { Send, Mail, Copy, Check } from "lucide-react";
+import { Send, Mail, Copy, Check, MessageCircle } from "lucide-react";
 import { useState } from "react";
 
 const EMAIL = "anandsundesha@gmail.com";
@@ -36,8 +36,16 @@ const Contact = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+const WHATSAPP_NUMBER = "918278669156";
+
+
+  const handleWhatsAppClick = () => {
+    const message = encodeURIComponent("Hi Anand, I'd like to discuss a project.");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
+  };
+
   return (
-    <section id="contact" className="relative py-32 px-4 z-10 overflow-hidden">
+    <section id="contact" className="relative py-20 px-4 z-10 overflow-hidden">
       <div className="max-w-4xl mx-auto text-center">
         {/* Section Title */}
         <h2 className="text-5xl md:text-6xl font-bold mb-20 bg-linear-to-r from-gray-200 via-gray-400 to-gray-200 bg-clip-text text-transparent drop-shadow-lg pb-2 font-display tracking-tight">
@@ -88,7 +96,7 @@ const Contact = () => {
           {/* CTA + Copy Email */}
           <div className="flex items-center justify-center gap-3 mb-6">
             <span className="text-gray-300 text-lg font-tech tracking-wider">
-              anandsundesha@gmail.com
+              {EMAIL}
             </span>
 
             <motion.button
@@ -114,35 +122,48 @@ const Contact = () => {
             </motion.button>
           </div>
 
-          {/* Single CTA button */}
-          <motion.a
-            href="#"
-            onClick={handleEmailClick}
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 0 30px rgba(255, 255, 255, 0.15)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="
-    inline-flex
-    items-center
-    gap-3
-    px-10
-    py-4
-    bg-linear-to-r
-    from-gray-200
-    to-gray-400
-    rounded-full
-    font-semibold
-    text-lg
-    text-black
-    transition-all
-    font-tech uppercase tracking-wide
-  "
-          >
-            <Mail className="w-5 h-5" />
-            Send Me an Email
-          </motion.a>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <motion.button
+              onClick={handleEmailClick}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 30px rgba(255, 255, 255, 0.15)",
+              }}
+              whileTap={{ scale: 0.95 }}
+
+              className="
+                inline-flex items-center gap-3 px-8 py-4
+                bg-linear-to-r from-gray-200 to-gray-400
+                rounded-full font-semibold text-lg text-black
+                transition-all font-tech uppercase tracking-wide
+                w-full sm:w-auto justify-center
+              "
+            >
+              <Mail className="w-5 h-5" />
+              Email Me
+            </motion.button>
+
+            <motion.button
+              onClick={handleWhatsAppClick}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 30px rgba(37, 211, 102, 0.3)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="
+                inline-flex items-center gap-3 px-8 py-4
+                bg-[#25D366] hover:bg-[#20bd5a]
+                rounded-full font-semibold text-lg text-white
+                transition-all font-tech uppercase tracking-wide
+                w-full sm:w-auto justify-center shadow-lg shadow-[#25D366]/20 cursor-pointer
+              "
+            >
+              <MessageCircle className="w-5 h-5" />
+              WhatsApp
+            </motion.button>
+          </div>
         </div>
       </div>
     </section>

@@ -9,7 +9,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative py-32 w-full md:w-[80%] mx-auto px-4 z-10 overflow-hidden"
+      className="relative py-20 w-full md:w-[80%] mx-auto px-4 z-10 overflow-hidden"
     >
       {/* Section title */}
       <h2 className="text-5xl md:text-6xl font-bold text-center mb-10 bg-linear-to-r from-gray-200 via-gray-400 to-gray-200 bg-clip-text text-transparent drop-shadow-lg pb-2 font-display tracking-tight">
