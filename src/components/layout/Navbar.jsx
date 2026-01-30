@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -21,7 +20,14 @@ const Navbar = ({ scrollToSection, activeSection, isLoaded }) => {
         transition={{ duration: 0.8, delay: 0.5 }}
         className="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:flex justify-between items-center w-4/5"
       >
-        <div className="flex justify-between items-center w-full bg-zinc-900/50 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 shadow-lg shadow-black/20">
+        <div className="
+          flex justify-between items-center w-full 
+          bg-zinc-900/30 backdrop-blur-3xl saturate-150
+          border border-white/10 border-t-white/20
+          rounded-full px-6 py-3 
+          shadow-2xl shadow-black/40
+          ring-1 ring-white/5
+        ">
           
           {/* Name / Logo */}
           <span className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-linear-to-r from-gray-100 to-gray-400 drop-shadow-sm font-display tracking-wider">
@@ -51,7 +57,7 @@ const Navbar = ({ scrollToSection, activeSection, isLoaded }) => {
 
       {/* Mobile Navbar */}
       <div className="md:hidden fixed top-6 left-1/2 -translate-x-1/2 z-50 w-11/12">
-        <div className="flex justify-between items-center bg-zinc-900/50 backdrop-blur-xl border border-white/10 rounded-full px-4 py-3 shadow-lg">
+        <div className="flex justify-between items-center bg-zinc-900/30 backdrop-blur-3xl saturate-150 border border-white/10 border-t-white/20 rounded-full px-4 py-3 shadow-2xl shadow-black/40 ring-1 ring-white/5">
           {/* Name */}
           <span className="text-xl font-bold bg-clip-text text-transparent bg-linear-to-r from-gray-100 to-gray-400">
             Anand.
