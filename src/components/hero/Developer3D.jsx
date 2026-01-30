@@ -2,7 +2,8 @@
 import React from 'react';
 import { SplineScene } from '../ui/SplineScene';
 
-const Developer3D = ({ onLoad }) => {
+// Memoize to prevent re-renders from Hero's typing effect
+const Developer3D = React.memo(({ onLoad }) => {
   return (
     <div className="relative w-full h-[500px] md:h-full flex items-center justify-center">
       <SplineScene 
@@ -12,6 +13,8 @@ const Developer3D = ({ onLoad }) => {
       />
     </div>
   );
-};
+});
+
+Developer3D.displayName = "Developer3D";
 
 export default Developer3D;

@@ -25,7 +25,18 @@ const StarryBackground = () => {
     }));
 
     let frame;
-    const animate = () => {
+    let lastTime = 0;
+    const fps = 30;
+    const interval = 1000 / fps;
+
+    const animate = (time) => {
+      frame = requestAnimationFrame(animate);
+
+      const delta = time - lastTime;
+      if (delta < interval) return;
+
+      lastTime = time - (delta % interval);
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       stars.forEach(s => {
         s.x += s.vx;
@@ -37,7 +48,6 @@ const StarryBackground = () => {
         ctx.fillStyle = `rgba(255,255,255,${s.o})`;
         ctx.fill();
       });
-      frame = requestAnimationFrame(animate);
     };
 
     animate();

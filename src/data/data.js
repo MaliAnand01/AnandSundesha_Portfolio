@@ -41,7 +41,8 @@ export const PROJECTS = [
     gradient: "from-gray-600 to-gray-400",
     liveDemo: "https://luvia.vercel.app/",
     code: "https://github.com/MaliAnand01/luvia-beauty",
-    img: "./luvia.png"
+    img: "./luvia.webp"
+
   },
   {
     title: "Shopease",
@@ -51,7 +52,8 @@ export const PROJECTS = [
     gradient: "from-gray-600 to-gray-400",
     liveDemo: "https://itsshopease.netlify.app/",
     code: "https://github.com/MaliAnand01/eCommerceProject",
-    img: "./shopease.png"
+    img: "./shopease.webp"
+
   },
   {
     title: "PongalDelights (Client Work)",
@@ -61,7 +63,8 @@ export const PROJECTS = [
     gradient: "from-zinc-600 to-zinc-400",
     liveDemo: "https://pongaldelights.vercel.app/",
     code: "https://github.com/MaliAnand01/ClientProject",
-    img: "./pongal.png"
+    img: "./pongal.webp"
+
   },
   {
     title: "VibeBox",
@@ -71,7 +74,8 @@ export const PROJECTS = [
     gradient: "from-slate-600 to-slate-400",
     liveDemo: "https://malianand01.github.io/JavaScript_Projects/Music_Player/index.html",
     code: "https://github.com/MaliAnand01/JavaScript_Projects?tab=readme-ov-file#-vibe-box--music-player",
-    img: "./music.png"
+    img: "./music.webp"
+
   },
   {
     title: "Notezy",
@@ -81,7 +85,8 @@ export const PROJECTS = [
     gradient: "from-gray-500 to-gray-300",
     liveDemo: "https://thenotezy.vercel.app/",
     code: "https://github.com/MaliAnand01/NotesAppReact",
-    img: "./notezy.png"
+    img: "./notezy.webp"
+
   }
 ];
 
